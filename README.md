@@ -147,73 +147,6 @@ self.authors: Set[str] = set()      # Unique authors
 | Sort by Title/Author/Year | O(n log n) | Python's Timsort algorithm |
 | Get Available Books | O(n) | Filter all books |
 
----
-
-## 🎓 How to Explain This in an Interview
-
-### **Q: "Walk me through your data structure choices."**
-
-**A**: "I used a combination of three data structures for different purposes:
-
-1. **List** stores books sequentially for when I need to iterate through all books for general searches and filtering.
-
-2. **Dictionary** maps book IDs to Book objects, giving me O(1) lookup time instead of O(n). When a user searches for a specific book by ID, I can retrieve it instantly.
-
-3. **Set** automatically handles uniqueness and gives O(1) membership checks for categories and authors. No duplicates, no overhead."
-
----
-
-### **Q: "Why not just use a List for everything?"**
-
-**A**: "Great question! A List would work, but with tradeoffs:
-- Searching by ID in a List is O(n) — I'd check every book
-- With Dictionary, it's O(1) — I go straight to the book
-- Sets ensure categories have no duplicates without manual checking
-- For a small library, it's fine, but at scale (millions of books), this matters."
-
----
-
-### **Q: "Can you describe a specific feature and its complexity?"**
-
-**A**: "Sure! The `search_by_id` feature is particularly efficient:
-```python
-book = self.book_map.get(book_id)  # O(1) - direct lookup
-```
-
-Compare that to a less optimized version:
-```python
-book = None
-for b in self.books:
-    if b.book_id == book_id:  # O(n) - checking every book
-        book = b
-        break
-```
-
-The first approach scales from 100 books to 1 million books with no performance degradation."
-
----
-
-### **Q: "What about the sorting feature?"**
-
-**A**: "I use Python's built-in `sorted()` function with a lambda key:
-```python
-sorted(self.books, key=lambda book: book.title.lower())
-```
-
-This uses Timsort, which is O(n log n) and highly optimized. I could implement quicksort or merge sort, but standard library functions are battle-tested and often faster due to C-level optimizations."
-
----
-
-### **Q: "What trade-offs did you make?"**
-
-**A**: "When I delete a book, I remove it from both the List and Dictionary:
-- List removal is O(n) because lists need to shift elements
-- Dictionary removal is O(1)
-- Overall: O(n) due to the List operation
-
-For better deletion performance, I could use a linked list (O(1) removal) or just mark books as deleted instead of truly removing them. But for a library system, deletion is rare, and List's cache locality benefits outweigh this."
-
----
 
 ## 📊 Sample Usage
 
@@ -264,26 +197,6 @@ ID   Title                    Author           Year   Category     Status
 4    The Catcher in the R... J.D. Salinger   1951   Fiction      ✅ ISSUED 
 ```
 
----
-
-## 🏆 Resume Bullet Points
-
-Use these points when describing this project on your resume:
-
-- **"Designed and implemented a Library Management System using DSA concepts (List, Dictionary, Set) to optimize search operations from O(n) to O(1) using HashMap lookups"**
-
-- **"Built three-layered architecture separating UI (main.py), business logic (library_manager.py), and persistence (file_handler.py) following clean code principles"**
-
-- **"Implemented 6+ search and filtering algorithms with various time complexities (O(1), O(n), O(n log n)), demonstrating understanding of performance tradeoffs"**
-
-- **"Integrated JSON-based file persistence allowing auto-save/load with proper error handling and data validation"**
-
-- **"Achieved 100% O(1) lookup for book ID searches using HashMap, enabling scalable performance for large datasets"**
-
-- **"Applied sorting algorithms (Timsort) with multiple criteria and demonstrated data structure selection based on use case requirements"**
-
----
-
 ## 🧪 Testing the Features
 
 ### Test 1: Add & Search by ID
@@ -328,35 +241,6 @@ Use these points when describing this project on your resume:
 
 ---
 
-## 🎯 Next Steps (For Your Own Learning)
-
-Want to extend this project? Consider:
-
-1. **SQLite Integration**: Replace JSON with a database
-2. **User Authentication**: Track who issues/returns books
-3. **Fine Calculation**: Auto-calculate fines for overdue books
-4. **Member Management**: Store member details
-5. **Book Reservations**: Queue system for unavailable books
-6. **Performance Testing**: Measure actual O(n) vs O(1) operations with large datasets
-7. **Unit Tests**: Add pytest to test each component
-
----
-
-## 📞 Interview Q&A Prep
-
-**Q: Why did you choose this project?**
-A: "I wanted to build something practical that clearly demonstrates DSA concepts. A real-world library system had multiple use cases (searching, filtering, sorting) that naturally needed different data structures and algorithms."
-
-**Q: What was the most challenging part?**
-A: "Deciding between List and Dictionary for storage. I realized that while a simple List works, Dictionary lookups are asymptotically faster. This taught me the importance of analyzing operations when choosing data structures."
-
-**Q: What would you improve?**
-A: "For production, I'd add a relational database (SQL) instead of JSON, implement user authentication, and add comprehensive logging. I'd also profile the code to find actual bottlenecks rather than relying only on theoretical complexity."
-
-**Q: How does this relate to the job?**
-A: "This shows I understand tradeoffs in system design. At [Company], choosing the right data structure for billions of records is crucial. This project proves I can think through those decisions."
-
----
 
 ## 📄 License
 
@@ -364,6 +248,4 @@ This project is free to use for educational and portfolio purposes.
 
 ---
 
-**Created for: Software Engineer Interns | Learning DSA Through Practical Projects**
 
-**Happy Learning! 🚀**
