@@ -1,0 +1,69 @@
+{
+    "next_id": 9,
+    "books": [
+        {
+            "book_id": 1,
+            "title": "The Great Gatsby",
+            "author": "F. Scott Fitzgerald",
+            "year": 1925,
+            "category": "Fiction",
+            "is_issued": true
+        },
+        {
+            "book_id": 2,
+            "title": "Sapiens",
+            "author": "Yuval Noah Harari",
+            "year": 2011,
+            "category": "Non-Fiction",
+            "is_issued": false
+        },
+        {
+            "book_id": 3,
+            "title": "Python Crash Course",
+            "author": "Eric Matthes",
+            "year": 2015,
+            "category": "Programming",
+            "is_issued": true
+        },
+        {
+            "book_id": 4,
+            "title": "The Catcher in the Rye",
+            "author": "J.D. Salinger",
+            "year": 1951,
+            "category": "Fiction",
+            "is_issued": false
+        },
+        {
+            "book_id": 5,
+            "title": "Atomic Habits",
+            "author": "James Clear",
+            "year": 2018,
+            "category": "Self-Help",
+            "is_issued": false
+        },
+        {
+            "book_id": 6,
+            "title": "Introduction to Algorithms",
+            "author": "CLRS",
+            "year": 2009,
+            "category": "Programming",
+            "is_issued": false
+        },
+        {
+            "book_id": 7,
+            "title": "A Brief History of Time",
+            "author": "Stephen Hawking",
+            "year": 1988,
+            "category": "Science",
+            "is_issued": false
+        },
+        {
+            "book_id": 8,
+            "title": "Dune",
+            "author": "Frank Herbert",
+            "year": 1965,
+            "category": "Science-Fiction",
+            "is_issued": false
+        }
+    ]
+}
